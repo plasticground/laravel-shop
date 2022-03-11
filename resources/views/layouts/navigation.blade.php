@@ -16,6 +16,18 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @can('products@index')
+                        <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.*')">
+                            {{ __('Products') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link :href="route('web.products.index')" :active="request()->routeIs('web.products.*')">
+                            {{ __('Products') }}
+                        </x-nav-link>
+                    @endcan
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

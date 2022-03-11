@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/products', \App\Http\Controllers\Web\ProductsController::class)
+    ->only(['index', 'show'])
+    ->names('web.products');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
