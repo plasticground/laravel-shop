@@ -9,7 +9,7 @@
                     <h2 class="px-4">Price</h2>
                     <h2 class="px-4">${{ $product->price }}</h2>
                 </div>
-                <x-button>Buy</x-button>
+                <x-button id="toCartButton">Add to cart</x-button>
             </div>
         </div>
     </x-slot>
@@ -32,4 +32,12 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            let btn = document.getElementById('toCartButton');
+            let span = document.getElementById('cartSizeSpan');
+            btn.addEventListener("click", () => Cart.addItem(span, {{ $product->id }}));
+        </script>
+    @endpush
 </x-app-layout>
+

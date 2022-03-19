@@ -30,6 +30,13 @@
                 </div>
             </div>
 
+            <div class="flex justify-center items-center">
+                <a href="{{ route('web.cart.index') }}">
+                    Cart
+                    <span id="cartSizeSpan" class="rounded-md bg-gray-800 px-1 text-white">{{ count(json_decode(session('cart', '[]'), true)) }}</span>
+                </a>
+            </div>
+
             @auth()
 
             <!-- Settings Dropdown -->
