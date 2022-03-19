@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::permanentRedirect('/', '/products');
 
 Route::resource('/products', \App\Http\Controllers\Web\ProductsController::class)
     ->only(['index', 'show'])
@@ -24,5 +22,11 @@ Route::resource('/products', \App\Http\Controllers\Web\ProductsController::class
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::group(['prefix' => 'cart', 'as' => 'web.cart.'], function () {
+    Route::get('/', [\App\Http\Controllers\Web\CartController::class, 'index'])->name('index');
+    Route::put('item/{id}', [\App\Http\Controllers\Web\CartController::class, 'addItem'])->name('add');
+    Route::delete('item/{id}', [\App\Http\Controllers\Web\CartController::class, 'removeItem'])->name('remove');
+});
 
 require __DIR__.'/auth.php';
