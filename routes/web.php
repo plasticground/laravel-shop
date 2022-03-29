@@ -29,4 +29,8 @@ Route::group(['prefix' => 'cart', 'as' => 'web.cart.'], function () {
     Route::delete('item/{id}', [\App\Http\Controllers\Web\CartController::class, 'removeItem'])->name('remove');
 });
 
+Route::resource('/orders', \App\Http\Controllers\Web\OrderController::class)
+    ->except(['edit', 'update', 'destroy'])
+    ->names('web.orders');
+
 require __DIR__.'/auth.php';

@@ -1,3 +1,23 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.bg-order-anew {
+    background-color: rgba(200,200,200,0.5);
+}
+
+.bg-order-moderation {
+    background-color: rgba(200,195,98,0.51);
+}
+
+.bg-order-approved {
+    background-color: rgba(24,200,42,0.51);
+}
+
+.bg-order-rejected {
+    background-color: rgba(200,7,0,0.51);
+}
+
+.bg-order-done {
+    background-color: rgba(7,100,200,0.51);
+}
