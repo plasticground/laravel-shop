@@ -64,6 +64,13 @@
                         </tfoot>
                     </table>
                 </div>
+
+                @if($products->isNotEmpty())
+                    <div class="flex justify-end pt-2">
+                        <p class="p-2">Total price: $ {{ $totalPrice }}</p>
+                        <x-button-link href="{{ route('web.orders.create') }}">Order</x-button-link>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

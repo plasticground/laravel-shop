@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Services\CartService;
 use Illuminate\Http\Request;
 
 /**
@@ -13,20 +14,13 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     /**
+     * @param CartService $cartService
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(CartService $cartService)
     {
-        $cart = $this->getCart()
-            ->map(fn ($id) => ['id' => $id])
-            ->groupBy('id')
-            ->map(fn ($products) => $products->count());
-
-        $products = Product::whereIn('id', $cart->keys())
-            ->get(['id', 'name', 'price']);
-
-        $products->each(fn (Product $product) => $product->count = $cart->get($product->id));
-        $totalPrice = $products->map(fn (Product $product) => $product->count * $product->price)->sum();
+        $products = $cartService->getProductsFromCart();
+        $totalPrice = $cartService->getTotalPrice();
 
         return view('web.cart.index', compact('products', 'totalPrice'));
     }
