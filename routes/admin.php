@@ -14,4 +14,7 @@ Route::group(['middleware' => ['permission:adminAccess']], function () {
         Route::post('approve/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'approve'])->name('approve');
         Route::post('reject/{order}', [\App\Http\Controllers\Admin\OrderController::class, 'reject'])->name('reject');
     });
+
+    Route::get('/statistics', \App\Http\Controllers\admin\StatisticsController::class)
+        ->name('admin.statistics.index');
 });
