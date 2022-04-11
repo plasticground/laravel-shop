@@ -43,6 +43,14 @@
                             </x-nav-link>
                         </div>
                     @endcan
+
+                    @can('statistics@index')
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('admin.statistics.index')" :active="request()->routeIs('admin.statistics.*')">
+                                {{ __('Statistics') }}
+                            </x-nav-link>
+                        </div>
+                    @endcan
                 @endauth
             </div>
             <div class="flex">
