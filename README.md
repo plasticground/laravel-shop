@@ -1,4 +1,4 @@
-##Install
+## Install
 
 1) `git clone https://github.com/plasticground/laravel-shop.git`
 2) `composer install`
@@ -8,7 +8,7 @@
 6) Configure [.env](https://laravel.com/docs/8.x/configuration#environment-configuration)
 7) `php artisan migrate`
 
-##About
+## About
 
 *This project was created for education. It represents the basic model of the store.*
 
