@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::permanentRedirect('/', '/products');
+Route::get('/', \App\Http\Controllers\Web\IndexController::class)->name('index');
 
 Route::resource('/products', \App\Http\Controllers\Web\ProductsController::class)
     ->only(['index', 'show'])
